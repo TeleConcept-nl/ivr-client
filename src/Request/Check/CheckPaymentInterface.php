@@ -23,10 +23,10 @@ interface CheckPaymentInterface extends RequestInterface
     public function setOutletId(int $outletId): self;
 
     /**
-     * @param int $transactionReference
-     * @return CheckPaymentInterface
+     * @param string $transactionReference
+     * @return $this
      */
-    public function setTransactionReference(int $transactionReference): self;
+    public function setTransactionReference(string $transactionReference): self;
 
     /**
      * @return CheckTransactionResponse

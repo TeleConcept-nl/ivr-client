@@ -70,10 +70,10 @@ abstract class CheckPayment extends Request implements CheckPaymentRequest
     }
 
     /**
-     * @param int $transactionReference
-     * @return CheckPaymentInterface
+     * @param string $transactionReference
+     * @return $this|CheckPaymentInterface
      */
-    final public function setTransactionReference(int $transactionReference): CheckPaymentRequest
+    final public function setTransactionReference(string $transactionReference): CheckPaymentRequest
     {
         $this->transactionId = $transactionReference;
         return $this;
