@@ -36,12 +36,12 @@ class CreatePayment implements CreatePaymentInterface
      */
     public function __construct(ResponseInterface $response)
     {
-        $data = json_decode($response->getBody()->getContents(), true);
+        $contents = json_decode($response->getBody()->getContents(), true);
 
-        $this->pincode = $data['pincode'];
-        $this->reference = $data['reference'];
-        $this->payline = $data['payline'];
-        $this->response = $data;
+        $this->pincode = $contents['data']['pincode'];
+        $this->reference = $contents['data']['reference'];
+        $this->payline = $contents['data']['payline'];
+        $this->response = $contents;
     }
 
     /**

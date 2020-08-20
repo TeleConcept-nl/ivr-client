@@ -4,9 +4,11 @@ namespace Teleconcept\Packages\Transaction\Client\Request\Create;
 use BadMethodCallException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
+use Teleconcept\Package\Ivr\Core\Domain\Payment\PerMinutePaymentInterface;
 use Teleconcept\Packages\Transaction\Client\ClientInterface as PaymentClient;
 use Teleconcept\Packages\Transaction\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
 use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as CreatePaymentResponse;
+use function Couchbase\defaultDecoder;
 use function GuzzleHttp\Psr7\stream_for;
 
 /**
@@ -137,9 +139,13 @@ abstract class CreatePayment extends Request implements CreatePaymentRequest
      */
     private function buildRequest(): CreatePaymentRequest
     {
-        $body = stream_for(json_encode([
-            $this->options
-        ]));
+        $options = $this->options;
+
+        if (!($this instanceof CreatePerMinutePaymentInterface)) {
+            unset($options['duration']);
+        }
+
+        $body = stream_for(json_encode($options));
 
         return $this->withBody($body);
     }
