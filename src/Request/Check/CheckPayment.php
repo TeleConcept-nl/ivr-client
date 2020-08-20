@@ -60,12 +60,22 @@ abstract class CheckPayment extends Request implements CheckPaymentRequest
     }
 
     /**
-     * @param int $transactionId
+     * @param int $outletId
      * @return CheckPaymentInterface
      */
-    final public function setTransactionId(int $transactionId): CheckPaymentRequest
+    final public function setOutletId(int $outletId): CheckPaymentInterface
     {
-        $this->transactionId = $transactionId;
+        $this->headers['Outlet'] = $outletId;
+        return $this;
+    }
+
+    /**
+     * @param int $transactionReference
+     * @return CheckPaymentInterface
+     */
+    final public function setTransactionReference(int $transactionReference): CheckPaymentRequest
+    {
+        $this->transactionId = $transactionReference;
         return $this;
     }
 

@@ -17,10 +17,16 @@ interface CheckPaymentInterface extends RequestInterface
     public function setAuthorizationBearer(string $bearer): self;
 
     /**
-     * @param int $transactionId
+     * @param int $outletId
+     * @return $this
+     */
+    public function setOutletId(int $outletId): self;
+
+    /**
+     * @param int $transactionReference
      * @return CheckPaymentInterface
      */
-    public function setTransactionId(int $transactionId): self;
+    public function setTransactionReference(int $transactionReference): self;
 
     /**
      * @return CheckTransactionResponse
