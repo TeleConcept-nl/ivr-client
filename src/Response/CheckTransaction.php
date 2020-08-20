@@ -21,9 +21,8 @@ class CheckTransaction implements CheckTransactionInterface
      */
     public function __construct(ResponseInterface $response)
     {
-        $data = json_decode($response->getBody()->getContents(), true);
-
-        $this->status = $data['status'];
+        $content = json_decode($response->getBody()->getContents(), true);
+        $this->status = $content['data']['status'];
     }
 
     /**
