@@ -86,7 +86,7 @@ abstract class CheckPayment extends Request implements CheckPaymentRequest
     final public function send(): CheckTransactionResponse
     {
         $uri = new Uri(sprintf($this->path, $this->transactionReference));
-        $this->withUri($uri);
+        $request = $this->withUri($uri);
 
         foreach ($this->headers as $header => $value) {
             $request = $request->withAddedHeader($header, $value);
