@@ -9,7 +9,7 @@ use Teleconcept\Packages\Transaction\Client\ClientInterface as TransactionClient
  */
 class CheckPerUsagePayment extends CheckPayment implements CheckPerUsagePaymentInterface
 {
-    private const IVR_CREATE_PER_USAGE_PATH = '/payments/pincode-input/per-usage/%d';
+    private const IVR_CREATE_PER_USAGE_PATH = '/payments/pincode-input/per-usage/%s';
 
     /**
      * CheckPerCallPayment constructor.

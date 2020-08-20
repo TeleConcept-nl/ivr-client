@@ -9,7 +9,7 @@ use Teleconcept\Packages\Transaction\Client\ClientInterface as TransactionClient
  */
 class CheckPerMinutePayment extends CheckPayment implements CheckPerMinutePaymentInterface
 {
-    private const IVR_CREATE_PER_MINUTE_PATH = '/payments/pincode-input/per-minute/%d';
+    private const IVR_CREATE_PER_MINUTE_PATH = '/payments/pincode-input/per-minute/%s';
 
     /**
      * CheckPerCallPayment constructor.
