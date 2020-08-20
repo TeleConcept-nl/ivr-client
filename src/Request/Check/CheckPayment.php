@@ -16,9 +16,9 @@ use Teleconcept\Packages\Transaction\Client\Response\CheckTransactionInterface a
 abstract class CheckPayment extends Request implements CheckPaymentRequest
 {
     /**
-     * @var int
+     * @var string
      */
-    private $transactionId;
+    private $transactionReference;
 
     /**
      * @var string
@@ -75,7 +75,7 @@ abstract class CheckPayment extends Request implements CheckPaymentRequest
      */
     final public function setTransactionReference(string $transactionReference): CheckPaymentRequest
     {
-        $this->transactionId = $transactionReference;
+        $this->transactionReference = $transactionReference;
         return $this;
     }
 
@@ -85,7 +85,7 @@ abstract class CheckPayment extends Request implements CheckPaymentRequest
      */
     final public function send(): CheckTransactionResponse
     {
-        $uri = new Uri(sprintf($this->path, $this->transactionId));
+        $uri = new Uri(sprintf($this->path, $this->transactionReference));
         $this->withUri($uri);
 
         foreach ($this->headers as $header => $value) {
