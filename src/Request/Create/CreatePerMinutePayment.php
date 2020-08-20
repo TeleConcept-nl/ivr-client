@@ -43,7 +43,7 @@ class CreatePerMinutePayment extends CreatePayment implements CreatePerMinutePay
             case $options['duration'] === null || $options['duration'] < 1:
             case $options['country'] === null:
             case $options['tariff'] === null:
-            case $options['ip-address'] === null || !filter_var($options['ip-address'], FILTER_FLAG_IPV4):
+            case $options['ip-address'] === null || !filter_var($options['ip-address'], FILTER_VALIDATE_IP):
             case empty($options['report-url']) || !filter_var($options['report-url'], FILTER_VALIDATE_URL):
             case $options['adult'] === null:
                 return false;

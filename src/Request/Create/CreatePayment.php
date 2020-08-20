@@ -50,6 +50,7 @@ abstract class CreatePayment extends Request implements CreatePaymentRequest
      */
     final public function setOutletId(int $outletId): CreatePaymentRequest
     {
+        $this->headers['Outlet'] = $outletId;
         return $this->setOption('outlet-id', $outletId);
     }
 

@@ -41,7 +41,7 @@ class CreatePerCallPayment extends CreatePayment implements CreatePerCallPayment
             case $options['outlet-id'] === null || $options['outlet-id'] < 1:
             case $options['country'] === null:
             case $options['tariff'] === null:
-            case $options['ip-address'] === null || !filter_var($options['ip-address'], FILTER_FLAG_IPV4):
+            case $options['ip-address'] === null || !filter_var($options['ip-address'], FILTER_VALIDATE_IP):
             case empty($options['report-url']) || !filter_var($options['report-url'], FILTER_VALIDATE_URL):
             case $options['adult'] === null:
                 return false;
