@@ -54,10 +54,11 @@ class CreatePerMinutePayment extends CreatePayment implements CreatePerMinutePay
 
     /**
      * @param int $duration
-     * @return CreateTransactionRequest
+     * @return $this|CreatePerMinutePaymentInterface
      */
-    final public function setDuration(int $duration): CreateTransactionRequest
+    final public function setDuration(int $duration): CreatePerMinutePaymentInterface
     {
         $this->setOption('duration', $duration);
+        return $this;
     }
 }

@@ -1,8 +1,6 @@
 <?php
 namespace Teleconcept\Packages\Transaction\Client\Request\Create;
 
-use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as CreateTransactionRequest;
-
 /**
  * Interface CreatePerCallPaymentInterface
  * @package Teleconcept\Packages\Transaction\Client\Request
@@ -10,8 +8,8 @@ use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as C
 interface CreatePerMinutePaymentInterface extends CreatePaymentInterface
 {
     /**
-     * @param int $duration duration in seconds
-     * @return CreateTransactionRequest
+     * @param int $duration
+     * @return CreatePerMinutePaymentInterface
      */
-    public function setDuration(int $duration): CreateTransactionRequest;
+    public function setDuration(int $duration): CreatePerMinutePaymentInterface;
 }
