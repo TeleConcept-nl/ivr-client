@@ -1,11 +1,11 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Check;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Check;
 
-use Teleconcept\Packages\Transaction\Client\ClientInterface as TransactionClient;
+use Teleconcept\Packages\Transaction\Ivr\Client\ClientInterface as TransactionClient;
 
 /**
  * Class CheckPerCallPayment
- * @package Teleconcept\Packages\Transaction\Client\Request\Check
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request\Check
  */
 class CheckPerCallPayment extends CheckPayment implements CheckPerCallPaymentInterface
 {

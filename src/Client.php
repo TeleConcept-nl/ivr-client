@@ -1,15 +1,15 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client;
+namespace Teleconcept\Packages\Transaction\Ivr\Client;
 
-use Teleconcept\Packages\Transaction\Client\Request\Check\CheckPaymentInterface as CheckPaymentRequest;
-use Teleconcept\Packages\Transaction\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPaymentInterface as CheckPaymentRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface as Response;
 
 /**
  * Class Client
- * @package Teleconcept\Packages\Transaction\Client
+ * @package Teleconcept\Packages\Transaction\Ivr\Client
  */
 class Client extends GuzzleClient implements ClientInterface
 {

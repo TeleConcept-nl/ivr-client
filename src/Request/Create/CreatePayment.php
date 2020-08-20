@@ -1,19 +1,17 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Create;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Create;
 
 use BadMethodCallException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
-use Teleconcept\Package\Ivr\Core\Domain\Payment\PerMinutePaymentInterface;
-use Teleconcept\Packages\Transaction\Client\ClientInterface as PaymentClient;
-use Teleconcept\Packages\Transaction\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
-use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as CreatePaymentResponse;
-use function Couchbase\defaultDecoder;
+use Teleconcept\Packages\Transaction\Ivr\Client\ClientInterface as PaymentClient;
+use Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\Response\CreatePaymentInterface as CreatePaymentResponse;
 use function GuzzleHttp\Psr7\stream_for;
 
 /**
  * Class CreatePayment
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 abstract class CreatePayment extends Request implements CreatePaymentRequest
 {
@@ -123,7 +121,7 @@ abstract class CreatePayment extends Request implements CreatePaymentRequest
 
         $response = $this->client->createPayment($request);
 
-        return new \Teleconcept\Packages\Transaction\Client\Response\CreatePayment($response);
+        return new \Teleconcept\Packages\Transaction\Ivr\Client\Response\CreatePayment($response);
     }
 
     /**

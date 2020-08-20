@@ -1,10 +1,10 @@
 <?php
 
-namespace Teleconcept\Packages\Transaction\Client\Response;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Response;
 
 /**
  * Interface TransactionResponse
- * @package Teleconcept\Packages\Transaction\Client\Response
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Response
  */
 interface CreatePaymentInterface
 {

@@ -1,12 +1,11 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Create;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Create;
 
-use Teleconcept\Packages\Transaction\Client\ClientInterface as TransactionClient;
-use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as CreateTransactionRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\ClientInterface as TransactionClient;
 
 /**
  * Class CreatePerCallPayment
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 class CreatePerMinutePayment extends CreatePayment implements CreatePerMinutePaymentInterface
 {

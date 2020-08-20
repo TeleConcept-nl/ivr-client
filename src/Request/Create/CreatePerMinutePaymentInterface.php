@@ -1,9 +1,9 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Create;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Create;
 
 /**
  * Interface CreatePerCallPaymentInterface
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 interface CreatePerMinutePaymentInterface extends CreatePaymentInterface
 {

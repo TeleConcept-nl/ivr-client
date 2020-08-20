@@ -1,17 +1,17 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Check;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Check;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
-use Teleconcept\Packages\Transaction\Client\ClientInterface as TransactionClient;
-use Teleconcept\Packages\Transaction\Client\Request\Check\CheckPaymentInterface as CheckPaymentRequest;
-use Teleconcept\Packages\Transaction\Client\Response\CheckTransaction;
-use Teleconcept\Packages\Transaction\Client\Response\CheckTransactionInterface as CheckTransactionResponse;
+use Teleconcept\Packages\Transaction\Ivr\Client\ClientInterface as TransactionClient;
+use Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPaymentInterface as CheckPaymentRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\Response\CheckTransaction;
+use Teleconcept\Packages\Transaction\Ivr\Client\Response\CheckTransactionInterface as CheckTransactionResponse;
 
 /**
  * Class CheckTransaction
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 abstract class CheckPayment extends Request implements CheckPaymentRequest
 {

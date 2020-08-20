@@ -1,12 +1,12 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Check;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Check;
 
 use Psr\Http\Message\RequestInterface;
-use Teleconcept\Packages\Transaction\Client\Response\CheckTransactionInterface as CheckTransactionResponse;
+use Teleconcept\Packages\Transaction\Ivr\Client\Response\CheckTransactionInterface as CheckTransactionResponse;
 
 /**
  * Interface TransactionRequest
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 interface CheckPaymentInterface extends RequestInterface
 {

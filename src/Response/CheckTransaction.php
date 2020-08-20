@@ -1,12 +1,12 @@
 <?php
 
-namespace Teleconcept\Packages\Transaction\Client\Response;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Response;
 
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class CheckTransaction
- * @package Teleconcept\Packages\Transaction\Client\Response
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Response
  */
 class CheckTransaction implements CheckTransactionInterface
 {

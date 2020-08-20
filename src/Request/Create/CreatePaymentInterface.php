@@ -1,15 +1,15 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Client\Request\Create;
+namespace Teleconcept\Packages\Transaction\Ivr\Client\Request\Create;
 
 use BadMethodCallException;
-use Teleconcept\Packages\Transaction\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
-use Teleconcept\Packages\Transaction\Client\Response\CreatePaymentInterface as CreateTransactionResponse;
+use Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
+use Teleconcept\Packages\Transaction\Ivr\Client\Response\CreatePaymentInterface as CreateTransactionResponse;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\RequestInterface;
 
 /**
  * Interface TransactionRequest
- * @package Teleconcept\Packages\Transaction\Client\Request
+ * @package Teleconcept\Packages\Transaction\Ivr\Client\Request
  */
 interface CreatePaymentInterface extends RequestInterface
 {
