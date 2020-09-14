@@ -9,12 +9,12 @@ $request = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\Creat
 $request
     ->setCountry('NLD')
     ->setIpAddress('192.168.0.1')
-    ->setOutletId(148319)
+    ->setOutletId(154135)
     ->setAdult(false)
     ->setReportUrl('https://private-607035-responsetesting.apiary-mock.com/report')
     ->setTariff('90')
     ->setDuration(120)
-    ->setAuthorizationBearer('69efad55169d7425595d98827');
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac');
 
 $response = $request->send();
 
@@ -28,8 +28,8 @@ $client = new \Teleconcept\Packages\Transaction\Ivr\Client\Client('https://ivr-a
 $checkRequest = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPerMinutePayment($client);
 
 $checkRequest
-    ->setAuthorizationBearer('69efad55169d7425595d98827')
-    ->setOutletId(148319)
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac')
+    ->setOutletId(154135)
     ->setTransactionReference('ae3f8e04-c9d1-431f-a879-f8d1b067e1da');
 
 $response = $checkRequest->send();
@@ -46,11 +46,11 @@ $request = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\Creat
 $request
     ->setCountry('NLD')
     ->setIpAddress('192.168.0.1')
-    ->setOutletId(148319)
+    ->setOutletId(154135)
     ->setAdult(false)
     ->setReportUrl('https://private-607035-responsetesting.apiary-mock.com/report')
     ->setTariff('90')
-    ->setAuthorizationBearer('69efad55169d7425595d98827');
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac');
 
 $response = $request->send();
 
@@ -64,8 +64,8 @@ $client = new \Teleconcept\Packages\Transaction\Ivr\Client\Client('https://ivr-a
 $checkRequest = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPerCallPayment($client);
 
 $checkRequest
-    ->setAuthorizationBearer('69efad55169d7425595d98827')
-    ->setOutletId(148319)
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac')
+    ->setOutletId(154135)
     ->setTransactionReference('ae3f8e04-c9d1-431f-a879-f8d1b067e1da');
 
 $response = $checkRequest->send();
@@ -81,11 +81,11 @@ $request = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\Creat
 $request
     ->setCountry('NLD')
     ->setIpAddress('192.168.0.1')
-    ->setOutletId(148319)
+    ->setOutletId(154135)
     ->setAdult(false)
     ->setReportUrl('https://private-607035-responsetesting.apiary-mock.com/report')
     ->setTariff('90')
-    ->setAuthorizationBearer('69efad55169d7425595d98827');
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac');
 
 $response = $request->send();
 
@@ -99,8 +99,8 @@ $client = new \Teleconcept\Packages\Transaction\Ivr\Client\Client('https://ivr-a
 $checkRequest = new \Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPerUsagePayment($client);
 
 $checkRequest
-    ->setAuthorizationBearer('69efad55169d7425595d98827')
-    ->setOutletId(148319)
+    ->setAuthorizationBearer('40924ec10f3aaed662fe62aac')
+    ->setOutletId(154135)
     ->setTransactionReference('ae3f8e04-c9d1-431f-a879-f8d1b067e1da');
 
 $response = $checkRequest->send();
