@@ -1,6 +1,7 @@
 <?php
 namespace Teleconcept\Ivr\Client\Request\PerMinute;
 
+use Teleconcept\Ivr\Client\Request\Check\CheckPaymentInterface;
 use Teleconcept\Ivr\Client\Request\RequestInterface;
 
 /**
@@ -9,4 +10,9 @@ use Teleconcept\Ivr\Client\Request\RequestInterface;
  */
 interface CheckRequestInterface extends RequestInterface
 {
+    /**
+     * @param string $transactionReference
+     * @return $this
+     */
+    public function setTransactionReference(string $transactionReference): self;
 }

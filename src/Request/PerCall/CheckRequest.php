@@ -4,22 +4,20 @@ namespace Teleconcept\Ivr\Client\Request\PerCall;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Uri;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
-use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerCall\CheckRequestInterface as CheckPerCallRequest;
+use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
-use function filter_var;
 use function GuzzleHttp\Psr7\stream_for;
-use function is_array;
-use function is_int;
 use function is_string;
 use function json_encode;
 use function strlen;
 
 /**
- * Class CheckPerCallPayment
- * @package Teleconcept\Ivr\Client\Request\Check
+ * Class CheckRequest
+ * @package Teleconcept\Ivr\Client\Request\PerCall
  */
-class CheckRequest extends Request implements CheckRequestInterface
+class CheckRequest extends Request implements CheckPerCallRequest
 {
     /**
      * CheckRequest constructor.
@@ -56,6 +54,15 @@ class CheckRequest extends Request implements CheckRequestInterface
         }
 
         return $this->client->checkPerCall($request);
+    }
+
+    /**
+     * @param string $transactionReference
+     * @return CheckPerCallRequest
+     */
+    final public function setTransactionReference(string $transactionReference): CheckPerCallRequest
+    {
+        return $this->setOption('reference', $transactionReference);
     }
 
     /**

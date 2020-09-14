@@ -4,11 +4,11 @@ namespace Teleconcept\Ivr\Client\Request\PerCall;
 use GuzzleHttp\Exception\GuzzleException;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerCall\CreateRequestInterface as CreatePerCallRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function filter_var;
 use function GuzzleHttp\Psr7\stream_for;
-use function is_array;
 use function is_bool;
 use function is_int;
 use function is_numeric;
@@ -20,7 +20,7 @@ use function strlen;
  * Class CreateRequest
  * @package Teleconcept\Ivr\Client\Request\PerCall
  */
-class CreateRequest extends Request implements CreateRequestInterface
+class CreateRequest extends Request implements CreatePerCallRequest
 {
     /**
      * CreateRequest constructor.
@@ -53,6 +53,55 @@ class CreateRequest extends Request implements CreateRequestInterface
         }
 
         return $this->client->createPerCall($request);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setOutletId(int $outletId): CreatePerCallRequest
+    {
+        $this->headers['Outlet'] = $outletId;
+        return $this->setOption('outlet-id', $outletId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setCountry(string $country): CreatePerCallRequest
+    {
+        return $this->setOption('country', $country);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setReportUrl(string $reportUrl): CreatePerCallRequest
+    {
+        return $this->setOption('report-url', $reportUrl);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setTariff(string $tariff): CreatePerCallRequest
+    {
+        return $this->setOption('tariff', $tariff);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setIpAddress(string $ipAddress): CreatePerCallRequest
+    {
+        return $this->setOption('ip-address', $ipAddress);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setAdult(bool $adult): CreatePerCallRequest
+    {
+        return $this->setOption('adult', $adult);
     }
 
     /**

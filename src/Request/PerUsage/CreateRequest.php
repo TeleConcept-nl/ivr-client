@@ -4,6 +4,7 @@ namespace Teleconcept\Ivr\Client\Request\PerUsage;
 use GuzzleHttp\Exception\GuzzleException;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerUsage\CreateRequestInterface as CreatePerUsageRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function filter_var;
@@ -52,6 +53,55 @@ class CreateRequest extends Request implements CreateRequestInterface
         }
 
         return $this->client->createPerUsage($request);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setOutletId(int $outletId): CreatePerUsageRequest
+    {
+        $this->headers['Outlet'] = $outletId;
+        return $this->setOption('outlet-id', $outletId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setCountry(string $country): CreatePerUsageRequest
+    {
+        return $this->setOption('country', $country);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setReportUrl(string $reportUrl): CreatePerUsageRequest
+    {
+        return $this->setOption('report-url', $reportUrl);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setTariff(string $tariff): CreatePerUsageRequest
+    {
+        return $this->setOption('tariff', $tariff);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setIpAddress(string $ipAddress): CreatePerUsageRequest
+    {
+        return $this->setOption('ip-address', $ipAddress);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setAdult(bool $adult): CreatePerUsageRequest
+    {
+        return $this->setOption('adult', $adult);
     }
 
     /**

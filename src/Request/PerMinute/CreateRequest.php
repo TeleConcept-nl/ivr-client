@@ -4,6 +4,8 @@ namespace Teleconcept\Ivr\Client\Request\PerMinute;
 use GuzzleHttp\Exception\GuzzleException;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerCall\CreateRequestInterface as CreatePerCallRequest;
+use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function filter_var;
@@ -53,6 +55,64 @@ class CreateRequest extends Request implements CreateRequestInterface
         }
 
         return $this->client->createPerMinute($request);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setOutletId(int $outletId): CreatePerMinuteRequest
+    {
+        $this->headers['Outlet'] = $outletId;
+        return $this->setOption('outlet-id', $outletId);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setCountry(string $country): CreatePerMinuteRequest
+    {
+        return $this->setOption('country', $country);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setReportUrl(string $reportUrl): CreatePerMinuteRequest
+    {
+        return $this->setOption('report-url', $reportUrl);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setTariff(string $tariff): CreatePerMinuteRequest
+    {
+        return $this->setOption('tariff', $tariff);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setIpAddress(string $ipAddress): CreatePerMinuteRequest
+    {
+        return $this->setOption('ip-address', $ipAddress);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setAdult(bool $adult): CreatePerMinuteRequest
+    {
+        return $this->setOption('adult', $adult);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    final public function setDuration(int $duration): CreatePerMinuteRequest
+    {
+        $this->setOption('duration', $duration);
+        return $this;
     }
 
     /**
@@ -117,15 +177,5 @@ class CreateRequest extends Request implements CreateRequestInterface
         }
 
         return $errors;
-    }
-
-    /**
-     * @param int $duration
-     * @return $this|CreateRequestInterface
-     */
-    final public function setDuration(int $duration): CreateRequestInterface
-    {
-        $this->setOption('duration', $duration);
-        return $this;
     }
 }

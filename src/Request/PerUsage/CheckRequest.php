@@ -5,6 +5,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Uri;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerUsage\CheckRequestInterface as CheckPerUsageRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function GuzzleHttp\Psr7\stream_for;
@@ -13,10 +14,10 @@ use function json_encode;
 use function strlen;
 
 /**
- * Class CheckPerUsagePayment
- * @package Teleconcept\Ivr\Client\Request\Check
+ * Class CheckRequest
+ * @package Teleconcept\Ivr\Client\Request\PerUsage
  */
-class CheckRequest extends Request implements CheckRequestInterface
+class CheckRequest extends Request implements CheckPerUsageRequest
 {
     /**
      * CheckRequest constructor.
@@ -53,6 +54,15 @@ class CheckRequest extends Request implements CheckRequestInterface
         }
 
         return $this->client->checkPerUsage($request);
+    }
+
+    /**
+     * @param string $transactionReference
+     * @return CheckPerUsageRequest
+     */
+    final public function setTransactionReference(string $transactionReference): CheckPerUsageRequest
+    {
+        return $this->setOption('reference', $transactionReference);
     }
 
     /**

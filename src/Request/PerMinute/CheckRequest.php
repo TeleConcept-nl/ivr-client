@@ -5,6 +5,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Uri;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
+use Teleconcept\Ivr\Client\Request\PerMinute\CheckRequestInterface as CheckPerMinuteRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function GuzzleHttp\Psr7\stream_for;
@@ -16,7 +17,7 @@ use function strlen;
  * Class CheckRequest
  * @package Teleconcept\Ivr\Client\Request\PerMinute
  */
-class CheckRequest extends Request implements CheckRequestInterface
+class CheckRequest extends Request implements CheckPerMinuteRequest
 {
     private const IVR_CREATE_PER_MINUTE_PATH = '/%s';
 
@@ -55,6 +56,15 @@ class CheckRequest extends Request implements CheckRequestInterface
         }
 
         return $this->client->checkPerMinute($request);
+    }
+
+    /**
+     * @param string $transactionReference
+     * @return CheckPerMinuteRequest
+     */
+    final public function setTransactionReference(string $transactionReference): CheckPerMinuteRequest
+    {
+        return $this->setOption('reference', $transactionReference);
     }
 
     /**
