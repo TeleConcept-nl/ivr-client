@@ -1,28 +1,60 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Ivr\Client;
+namespace Teleconcept\Ivr\Client;
 
-use Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPaymentInterface as CheckTransactionRequest;
-use Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\CreatePaymentInterface as CreateTransactionRequest;
 use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface as Response;
+use Teleconcept\Ivr\Client\Request\PerCall\CheckRequestInterface as CheckPerCallRequest;
+use Teleconcept\Ivr\Client\Request\PerCall\CreateRequestInterface as CreatePerCallRequest;
+use Teleconcept\Ivr\Client\Request\PerMinute\CheckRequestInterface as CheckPerMinuteRequest;
+use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
+use Teleconcept\Ivr\Client\Request\PerUsage\CheckRequestInterface as CheckPerUsageRequest;
+use Teleconcept\Ivr\Client\Request\PerUsage\CreateRequestInterface as CreatePerUsageRequest;
+use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 
 /**
  * Interface ClientInterface
- * @package Teleconcept\Packages\Transaction\Ivr\Client
+ * @package Teleconcept\Ivr\Client
  */
 interface ClientInterface extends \GuzzleHttp\ClientInterface
 {
     /**
-     * @param CreateTransactionRequest $request
+     * @param CreatePerCallRequest $request
      * @return Response
      * @throws GuzzleException
      */
-    public function createPayment(CreateTransactionRequest $request): Response;
+    public function createPerCall(CreatePerCallRequest $request): Response;
 
     /**
-     * @param CheckTransactionRequest $request
+     * @param CheckPerCallRequest $request
      * @return Response
      * @throws GuzzleException
      */
-    public function checkPayment(CheckTransactionRequest $request): Response;
+    public function checkPerCall(CheckPerCallRequest $request): Response;
+
+    /**
+     * @param CreatePerMinuteRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    public function createPerMinute(CreatePerMinuteRequest $request): Response;
+
+    /**
+     * @param CheckPerMinuteRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    public function checkPerMinute(CheckPerMinuteRequest $request): Response;
+
+    /**
+     * @param CreatePerUsageRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    public function createPerUsage(CreatePerUsageRequest $request): Response;
+
+    /**
+     * @param CheckPerUsageRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    public function checkPerUsage(CheckPerUsageRequest $request): Response;
 }

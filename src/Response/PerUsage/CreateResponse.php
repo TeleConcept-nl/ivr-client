@@ -1,14 +1,13 @@
 <?php
+namespace Teleconcept\Ivr\Client\Response\PerUsage;
 
-namespace Teleconcept\Packages\Transaction\Ivr\Client\Response;
-
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface as Response;
 
 /**
- * Class CreateTransaction
- * @package Teleconcept\Packages\Transaction\Ivr\Client\Response
+ * Class CreateResponse
+ * @package Teleconcept\Ivr\Client\Response\PerUsage
  */
-class CreatePayment implements CreatePaymentInterface
+class CreateResponse implements CreateResponseInterface
 {
     /**
      * @var string
@@ -32,9 +31,9 @@ class CreatePayment implements CreatePaymentInterface
 
     /**
      * CreateTransaction constructor.
-     * @param ResponseInterface $response
+     * @param Response $response
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(Response $response)
     {
         $contents = json_decode($response->getBody()->getContents(), true);
 

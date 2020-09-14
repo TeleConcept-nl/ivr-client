@@ -1,12 +1,13 @@
 <?php
+namespace Teleconcept\Ivr\Client\Response\PerCall;
 
-namespace Teleconcept\Packages\Transaction\Ivr\Client\Response;
+use Teleconcept\Ivr\Client\Response\ResponseInterface;
 
 /**
- * Interface TransactionResponse
- * @package Teleconcept\Packages\Transaction\Ivr\Client\Response
+ * Interface CreateResponseInterface
+ * @package Teleconcept\Ivr\Client\Response\PerCall
  */
-interface CreatePaymentInterface
+interface CreateResponseInterface extends ResponseInterface
 {
     /**
      * @return string

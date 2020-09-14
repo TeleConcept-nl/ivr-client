@@ -1,14 +1,13 @@
 <?php
-
-namespace Teleconcept\Packages\Transaction\Ivr\Client\Response;
+namespace Teleconcept\Ivr\Client\Response\PerUsage;
 
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class CheckTransaction
- * @package Teleconcept\Packages\Transaction\Ivr\Client\Response
+ * Class CheckResponse
+ * @package Teleconcept\Ivr\Client\Response\PerUsage
  */
-class CheckTransaction implements CheckTransactionInterface
+class CheckResponse implements CheckResponseInterface
 {
     /**
      * @var string

@@ -1,44 +1,157 @@
 <?php
-namespace Teleconcept\Packages\Transaction\Ivr\Client;
+namespace Teleconcept\Ivr\Client;
 
-use Teleconcept\Packages\Transaction\Ivr\Client\Request\Check\CheckPaymentInterface as CheckPaymentRequest;
-use Teleconcept\Packages\Transaction\Ivr\Client\Request\Create\CreatePaymentInterface as CreatePaymentRequest;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface as Response;
+use Teleconcept\Ivr\Client\Request\PerCall\CheckRequestInterface as CheckPerCallRequest;
+use Teleconcept\Ivr\Client\Request\PerCall\CreateRequestInterface as CreatePerCallRequest;
+use Teleconcept\Ivr\Client\Request\PerMinute\CheckRequestInterface as CheckPerMinuteRequest;
+use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
+use Teleconcept\Ivr\Client\Request\PerUsage\CheckRequestInterface as CheckPerUsageRequest;
+use Teleconcept\Ivr\Client\Request\PerUsage\CreateRequestInterface as CreatePerUsageRequest;
+use Teleconcept\Ivr\Client\Response\Error\BadRequestResponse;
+use Teleconcept\Ivr\Client\Response\Error\NotFoundResponse;
+use Teleconcept\Ivr\Client\Response\Error\PreconditionFailedResponse;
+use Teleconcept\Ivr\Client\Response\Error\UnauthorizedResponse;
+use Teleconcept\Ivr\Client\Response\PerCall\CreateResponse as CreatePerCallResponse;
+use Teleconcept\Ivr\Client\Response\PerCall\CheckResponse as CheckPerCallResponse;
+use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 
 /**
  * Class Client
- * @package Teleconcept\Packages\Transaction\Ivr\Client
+ * @package Teleconcept\Ivr\Client
  */
 class Client extends GuzzleClient implements ClientInterface
 {
     /**
      * Client constructor.
-     * @param $transactionClientDomain
+     * @param $ivrApiDomain
      */
-    public function __construct(string $transactionClientDomain)
+    public function __construct(string $ivrApiDomain)
     {
-        parent::__construct(['base_uri' => $transactionClientDomain]);
+        parent::__construct(['base_uri' => $ivrApiDomain]);
     }
 
     /**
-     * @param CreatePaymentRequest $createPaymentRequest
+     * @param CreatePerCallRequest $request
      * @return Response
      * @throws GuzzleException
      */
-    final public function createPayment(CreatePaymentRequest $createPaymentRequest): Response
+    final public function createPerCall(CreatePerCallRequest $request): Response
     {
-        return $this->send($createPaymentRequest);
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CreatePerCallResponse($response);
     }
 
     /**
-     * @param CheckPaymentRequest $checkPaymentRequest
+     * @param CheckPerCallRequest $request
      * @return Response
      * @throws GuzzleException
      */
-    final public function checkPayment(CheckPaymentRequest $checkPaymentRequest): Response
+    final public function checkPerCall(CheckPerCallRequest $request): Response
     {
-        return $this->send($checkPaymentRequest);
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CheckPerCallResponse($response);
+    }
+
+    /**
+     * @param CreatePerMinuteRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    final public function createPerMinute(CreatePerMinuteRequest $request): Response
+    {
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CreatePerCallResponse($response);
+    }
+
+    /**
+     * @param CheckPerMinuteRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    final public function checkPerMinute(CheckPerMinuteRequest $request): Response
+    {
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CheckPerCallResponse($response);
+    }
+
+
+    /**
+     * @param CreatePerUsageRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    final public function createPerUsage(CreatePerUsageRequest $request): Response
+    {
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CreatePerCallResponse($response);
+    }
+
+    /**
+     * @param CheckPerUsageRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    final public function checkPerUsage(CheckPerUsageRequest $request): Response
+    {
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new CheckPerCallResponse($response);
+    }
+
+    /**
+     * @param ClientException $exception
+     * @return Response
+     * @throws GuzzleException
+     */
+    private function processClientException(ClientException $exception): Response
+    {
+        $errorResponse = $exception->getResponse();
+
+        if ($errorResponse && $errorResponse->getStatusCode() === 400) {
+            return new BadRequestResponse($errorResponse);
+        }
+        if ($errorResponse && $errorResponse->getStatusCode() === 401) {
+            return new UnauthorizedResponse($errorResponse);
+        }
+        if ($errorResponse && $errorResponse->getStatusCode() === 404) {
+            return new NotFoundResponse($errorResponse);
+        }
+        if ($errorResponse && $errorResponse->getStatusCode() === 412) {
+            return new PreconditionFailedResponse($errorResponse);
+        }
+
+        throw $exception;
     }
 }
