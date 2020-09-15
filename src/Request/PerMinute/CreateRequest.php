@@ -123,7 +123,7 @@ class CreateRequest extends Request implements CreateRequestInterface
         $options = $this->options;
 
         $errors = $this->validateHeaders();
-
+/*
         if (!isset($options['outlet-id'])) {
             $errors['$outletId'] = 'was not supplied.';
         } elseif (!is_int($options['outlet-id'])) {
@@ -131,7 +131,7 @@ class CreateRequest extends Request implements CreateRequestInterface
         } elseif ($options['outlet-id'] < 1) {
             $errors['$outletId'] = 'has to be greater than zero.';
         }
-
+*/
         if (!isset($options['country'])) {
             $errors['$country'] = 'was not set.';
         } elseif (!is_string($options['country'])) {

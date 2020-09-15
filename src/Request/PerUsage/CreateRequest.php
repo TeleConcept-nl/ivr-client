@@ -112,14 +112,14 @@ class CreateRequest extends Request implements CreateRequestInterface
         $options = $this->options;
         $errors = $this->validateHeaders();
 
-        if (!isset($options['outlet-id'])) {
+/*        if (!isset($options['outlet-id'])) {
             $errors['outletId'] = 'was not set.';
         } elseif (!is_int($options['outlet-id'])) {
             $errors['outletId'] = 'has to be an integer.';
         } elseif ($options['outlet-id'] < 1) {
             $errors['outletId'] = 'has to be equal or greater than 1.';
         }
-
+*/
         if (!isset($options['country'])) {
             $errors['country'] = 'was not set.';
         } elseif (!is_string($options['country'])) {
