@@ -38,7 +38,7 @@ class ConsumeRequest extends Request implements ConsumeRequestInterface
         }
 
         $body = stream_for(json_encode($this->options));
-        $uri = new Uri('/payments/pincode-input/per-call/' . $this->options['reference']);
+        $uri = new Uri('/payments/pincode-output/' . $this->options['reference']);
         $request = $this
             ->withBody($body)
             ->withUri($uri);
