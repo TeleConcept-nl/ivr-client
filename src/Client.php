@@ -17,6 +17,10 @@ use Teleconcept\Ivr\Client\Response\Error\PreconditionFailedResponse;
 use Teleconcept\Ivr\Client\Response\Error\UnauthorizedResponse;
 use Teleconcept\Ivr\Client\Response\PerCall\CreateResponse as CreatePerCallResponse;
 use Teleconcept\Ivr\Client\Response\PerCall\CheckResponse as CheckPerCallResponse;
+use Teleconcept\Ivr\Client\Response\PerMinute\CreateResponse as CreatePerMinuteResponse;
+use Teleconcept\Ivr\Client\Response\PerMinute\CheckResponse as CheckPerMinuteResponse;
+use Teleconcept\Ivr\Client\Response\PerUsage\CreateResponse as CreatePerUsageResponse;
+use Teleconcept\Ivr\Client\Response\PerUsage\CheckResponse as CheckPerUsageResponse;
 use Teleconcept\Ivr\Client\Response\Pincode\ConsumeResponse as ConsumePincodeResponse;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 
@@ -80,7 +84,7 @@ class Client extends GuzzleClient implements ClientInterface
             return $this->processClientException($exception);
         }
 
-        return new CreatePerCallResponse($response);
+        return new CreatePerMinuteResponse($response);
     }
 
     /**
@@ -96,7 +100,7 @@ class Client extends GuzzleClient implements ClientInterface
             return $this->processClientException($exception);
         }
 
-        return new CheckPerCallResponse($response);
+        return new CheckPerMinuteResponse($response);
     }
 
 
@@ -113,7 +117,7 @@ class Client extends GuzzleClient implements ClientInterface
             return $this->processClientException($exception);
         }
 
-        return new CreatePerCallResponse($response);
+        return new CreatePerUsageResponse($response);
     }
 
     /**
@@ -129,7 +133,7 @@ class Client extends GuzzleClient implements ClientInterface
             return $this->processClientException($exception);
         }
 
-        return new CheckPerCallResponse($response);
+        return new CheckPerUsageResponse($response);
     }
 
     /**
