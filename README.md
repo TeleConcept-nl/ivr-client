@@ -101,3 +101,17 @@ $response = $checkRequest->send();
 
 echo $response->status(); //string representation of the status of the call
 ```
+
+#Consume pincode output Payment
+```
+$client = new \Teleconcept\Ivr\Client\Client('https://ivr-api.teleconcept.nl');
+$consumeRequest = new \Teleconcept\Ivr\Client\Request\Pincode\ConsumeRequest($client);
+
+$consumeRequest
+    ->setAuthorization('40924ec10f3aaed662fe62aac', 154135)
+    ->setPincode('123456');
+
+$response = $consumeRequest->send();
+
+echo $response->reference(); //uuid string of the payment you found
+```
