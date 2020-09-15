@@ -43,7 +43,7 @@ class CheckRequest extends Request implements CheckPerUsageRequest
         }
 
         $body = stream_for(json_encode($this->options));
-        $uri = new Uri('/payments/pincode-input/per-call/' . $this->options['reference']);
+        $uri = new Uri('/payments/pincode-input/per-usage/' . $this->options['reference']);
         $request = $this
             ->withBody($body)
             ->withUri($uri);

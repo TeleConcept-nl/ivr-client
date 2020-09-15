@@ -19,8 +19,6 @@ use function strlen;
  */
 class CheckRequest extends Request implements CheckPerMinuteRequest
 {
-    private const IVR_CREATE_PER_MINUTE_PATH = '/%s';
-
     /**
      * CheckRequest constructor.
      * @param Client $client
@@ -45,7 +43,7 @@ class CheckRequest extends Request implements CheckPerMinuteRequest
         }
 
         $body = stream_for(json_encode($this->options));
-        $uri = new Uri('/payments/pincode-input/per-call/' . $this->options['reference']);
+        $uri = new Uri('/payments/pincode-input/per-minute/' . $this->options['reference']);
         $request = $this
             ->withBody($body)
             ->withUri($uri);
