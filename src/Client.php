@@ -10,12 +10,14 @@ use Teleconcept\Ivr\Client\Request\PerMinute\CheckRequestInterface as CheckPerMi
 use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
 use Teleconcept\Ivr\Client\Request\PerUsage\CheckRequestInterface as CheckPerUsageRequest;
 use Teleconcept\Ivr\Client\Request\PerUsage\CreateRequestInterface as CreatePerUsageRequest;
+use Teleconcept\Ivr\Client\Request\Pincode\ConsumeRequestInterface as ConsumePincodeRequest;
 use Teleconcept\Ivr\Client\Response\Error\BadRequestResponse;
 use Teleconcept\Ivr\Client\Response\Error\NotFoundResponse;
 use Teleconcept\Ivr\Client\Response\Error\PreconditionFailedResponse;
 use Teleconcept\Ivr\Client\Response\Error\UnauthorizedResponse;
 use Teleconcept\Ivr\Client\Response\PerCall\CreateResponse as CreatePerCallResponse;
 use Teleconcept\Ivr\Client\Response\PerCall\CheckResponse as CheckPerCallResponse;
+use Teleconcept\Ivr\Client\Response\Pincode\ConsumeResponse as ConsumePincodeResponse;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 
 /**
@@ -128,6 +130,22 @@ class Client extends GuzzleClient implements ClientInterface
         }
 
         return new CheckPerCallResponse($response);
+    }
+
+    /**
+     * @param ConsumePincodeRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    final public function consumePincode(ConsumePincodeRequest $request): Response
+    {
+        try {
+            $response = $this->send($request);
+        } catch (ClientException $exception) {
+            return $this->processClientException($exception);
+        }
+
+        return new ConsumePincodeResponse($response);
     }
 
     /**

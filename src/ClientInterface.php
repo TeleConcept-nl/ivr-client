@@ -8,6 +8,7 @@ use Teleconcept\Ivr\Client\Request\PerMinute\CheckRequestInterface as CheckPerMi
 use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
 use Teleconcept\Ivr\Client\Request\PerUsage\CheckRequestInterface as CheckPerUsageRequest;
 use Teleconcept\Ivr\Client\Request\PerUsage\CreateRequestInterface as CreatePerUsageRequest;
+use Teleconcept\Ivr\Client\Request\Pincode\ConsumeRequestInterface as ConsumePincodeRequest;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 
 /**
@@ -57,4 +58,11 @@ interface ClientInterface extends \GuzzleHttp\ClientInterface
      * @throws GuzzleException
      */
     public function checkPerUsage(CheckPerUsageRequest $request): Response;
+
+    /**
+     * @param ConsumePincodeRequest $request
+     * @return Response
+     * @throws GuzzleException
+     */
+    public function consumePincode(ConsumePincodeRequest $request): Response;
 }

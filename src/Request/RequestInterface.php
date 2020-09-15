@@ -32,4 +32,10 @@ interface RequestInterface extends \Psr\Http\Message\RequestInterface
      * @return array
      */
     public function validateHeaders(): array;
+
+    /**
+     * @param string $apiToken
+     * @return RequestInterface
+     */
+    public function setAuthorizationBearer(string $apiToken): RequestInterface;
 }

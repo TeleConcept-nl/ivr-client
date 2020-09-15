@@ -57,6 +57,17 @@ abstract class Request extends Psr7Request implements RequestInterface
     }
 
     /**
+     * @param string $apiToken
+     * @return RequestInterface
+     */
+    final public function setAuthorizationBearer(string $apiToken): RequestInterface
+    {
+        $this->headers['Authorization'] = 'Bearer ' . $apiToken;
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     final public function validateHeaders(): array
