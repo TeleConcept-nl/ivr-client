@@ -73,15 +73,18 @@ abstract class Request extends Psr7Request implements RequestInterface
     final public function validateHeaders(): array
     {
         $headers = $this->headers;
+        $errors = [];
 
         if ($headers['Authorization'] === null) {
             $errors['apiKey'] = 'was not set.';
         }
 
-        if (!is_int($headers['Organization'])) {
-            $errors['organization'] = 'was not set.';
-        } elseif ($headers['Organization'] < 1) {
-            $errors['organization'] = 'was set but was invalid.';
+        if (!is_int($headers['Outlet'])) {
+            $errors['Outlet'] = 'was not set.';
+        } elseif ($headers['Outlet'] < 1) {
+            $errors['Outlet'] = 'was set but was invalid.';
         }
+
+        return $errors;
     }
 }
