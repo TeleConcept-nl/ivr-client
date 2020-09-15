@@ -48,7 +48,6 @@ class CheckRequest extends Request implements CheckPerCallRequest
             ->withBody($body)
             ->withUri($uri);
 
-
         foreach ($this->headers as $header => $value) {
             $request = $request->withAddedHeader($header, $value);
         }

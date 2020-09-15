@@ -31,13 +31,13 @@ abstract class Request extends Psr7Request implements RequestInterface
 
     /**
      * @param string $apiToken
-     * @param int $organizationId
+     * @param int $outletId
      * @return RequestInterface
      */
-    final public function setAuthorization(string $apiToken, int $organizationId): RequestInterface
+    final public function setAuthorization(string $apiToken, int $outletId): RequestInterface
     {
         $this->headers['Authorization'] = 'Bearer ' . $apiToken;
-        $this->headers['Organization'] = $organizationId;
+        $this->headers['Outlet'] = $outletId;
 
         return $this;
     }
@@ -57,17 +57,6 @@ abstract class Request extends Psr7Request implements RequestInterface
     }
 
     /**
-     * @param string $apiToken
-     * @return RequestInterface
-     */
-    final public function setAuthorizationBearer(string $apiToken): RequestInterface
-    {
-        $this->headers['Authorization'] = 'Bearer ' . $apiToken;
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
     final public function validateHeaders(): array
@@ -79,10 +68,12 @@ abstract class Request extends Psr7Request implements RequestInterface
             $errors['apiKey'] = 'was not set.';
         }
 
-        if (!is_int($headers['Outlet'])) {
+        if (!isset($headers['Outlet'])) {
             $errors['Outlet'] = 'was not set.';
+        } elseif (!is_int($headers['Outlet'])) {
+            $errors['Outlet'] = 'has to be an integer.';
         } elseif ($headers['Outlet'] < 1) {
-            $errors['Outlet'] = 'was set but was invalid.';
+            $errors['Outlet'] = 'has to be equal or greater than 1.';
         }
 
         return $errors;
