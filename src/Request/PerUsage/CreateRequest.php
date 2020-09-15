@@ -58,15 +58,6 @@ class CreateRequest extends Request implements CreateRequestInterface
     /**
      * @inheritDoc
      */
-    final public function setOutletId(int $outletId): CreatePerUsageRequest
-    {
-        $this->headers['Outlet'] = $outletId;
-        return $this->setOption('outlet-id', $outletId);
-    }
-
-    /**
-     * @inheritDoc
-     */
     final public function setCountry(string $country): CreatePerUsageRequest
     {
         return $this->setOption('country', $country);
@@ -112,14 +103,6 @@ class CreateRequest extends Request implements CreateRequestInterface
         $options = $this->options;
         $errors = $this->validateHeaders();
 
-/*        if (!isset($options['outlet-id'])) {
-            $errors['outletId'] = 'was not set.';
-        } elseif (!is_int($options['outlet-id'])) {
-            $errors['outletId'] = 'has to be an integer.';
-        } elseif ($options['outlet-id'] < 1) {
-            $errors['outletId'] = 'has to be equal or greater than 1.';
-        }
-*/
         if (!isset($options['country'])) {
             $errors['country'] = 'was not set.';
         } elseif (!is_string($options['country'])) {

@@ -4,13 +4,11 @@ namespace Teleconcept\Ivr\Client\Request\PerMinute;
 use GuzzleHttp\Exception\GuzzleException;
 use Teleconcept\Ivr\Client\ClientInterface as Client;
 use Teleconcept\Ivr\Client\Exception\ValidationException;
-use Teleconcept\Ivr\Client\Request\PerCall\CreateRequestInterface as CreatePerCallRequest;
 use Teleconcept\Ivr\Client\Request\PerMinute\CreateRequestInterface as CreatePerMinuteRequest;
 use Teleconcept\Ivr\Client\Request\Request;
 use Teleconcept\Ivr\Client\Response\ResponseInterface as Response;
 use function filter_var;
 use function GuzzleHttp\Psr7\stream_for;
-use function is_array;
 use function is_bool;
 use function is_int;
 use function is_numeric;
@@ -55,15 +53,6 @@ class CreateRequest extends Request implements CreateRequestInterface
         }
 
         return $this->client->createPerMinute($request);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    final public function setOutletId(int $outletId): CreatePerMinuteRequest
-    {
-        $this->headers['Outlet'] = $outletId;
-        return $this->setOption('outlet-id', $outletId);
     }
 
     /**
@@ -121,17 +110,8 @@ class CreateRequest extends Request implements CreateRequestInterface
     final public function validate(): array
     {
         $options = $this->options;
-
         $errors = $this->validateHeaders();
-/*
-        if (!isset($options['outlet-id'])) {
-            $errors['$outletId'] = 'was not supplied.';
-        } elseif (!is_int($options['outlet-id'])) {
-            $errors['$outletId'] = 'has to be an integer.';
-        } elseif ($options['outlet-id'] < 1) {
-            $errors['$outletId'] = 'has to be greater than zero.';
-        }
-*/
+
         if (!isset($options['country'])) {
             $errors['$country'] = 'was not set.';
         } elseif (!is_string($options['country'])) {

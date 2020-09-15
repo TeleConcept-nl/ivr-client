@@ -11,12 +11,6 @@ use Teleconcept\Ivr\Client\Request\RequestInterface as Request;
 interface CreateRequestInterface extends Request
 {
     /**
-     * @param int $outletId
-     * @return $this
-     */
-    public function setOutletId(int $outletId): self;
-
-    /**
      * @param string $country
      * @return $this
      */
